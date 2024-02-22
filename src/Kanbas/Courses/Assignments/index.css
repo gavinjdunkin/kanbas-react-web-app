@@ -1,0 +1,26 @@
+.modern-input {
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .modern-button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modern-button.group {
+    background-color: gray;
+    color: white;
+  }
+  
+  .modern-button.assignment {
+    background-color: red;
+    color: white;
+  }

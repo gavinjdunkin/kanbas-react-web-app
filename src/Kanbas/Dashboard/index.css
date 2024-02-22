@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+body * {
+font-family: Arial, Helvetica, sans-serif;
+}
+.card-custom {
+  width: 150px; /* adjust as needed */
+  height: 200px; /* adjust as needed */
+  object-fit: cover;
+}
+.card-img-custom {
+  width: 100%; /* make the image take up the full width of its container */
+  height: 200px; /* adjust as needed */
+  object-fit: cover; /* resize the image to cover the entire width and height of its container, while maintaining its aspect ratio */
+}
+.card-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: start;
+}
+.card-container .card {
+width: 300px;
+margin: 10px;
+}
+@media (max-width: 1200px) {
+.card-container .card {
+  width: calc(100% / 3 - 20px);
+}
+}
+@media (max-width: 900px) {
+.card-container .card {
+  width: calc(100% / 2 - 20px);
+}
+}
