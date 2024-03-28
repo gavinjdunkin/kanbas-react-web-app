@@ -1,18 +1,27 @@
-import db from "../../Kanbas/Database";
-import { Navigate, Route, Routes, useParams } from "react-router-dom";
-import { HiMiniBars3 } from "react-icons/hi2";
-import CourseNavigation from "./Navigation";
-import Modules from "./Modules";
-import Home from "./Home";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, Routes, Route, Navigate } from "react-router";
 import Assignments from "./Assignments";
-
-
-function Courses({courses}: {courses: any}) {
+import Home from "./Home";
+import Modules from "./Modules";
+import CourseNavigation from "./Navigation";
+function Courses() {
   const { courseId } = useParams();
-  const course = courses.find((course: { _id: string | undefined; }) => course._id === courseId);
+  const COURSES_API = "http://localhost:4000/api/courses";
+  const [course, setCourse] = useState<any>({ _id: "" });
+  const findCourseById = async (courseId?: string) => {
+    const response = await axios.get(
+      `${COURSES_API}/${courseId}`
+    );
+    setCourse(response.data);
+  };
+  useEffect(() => {
+    findCourseById(courseId);
+  }, [courseId]);
+
   return (
     <div>
-      <h1 style={{ color: 'red', marginTop: '20px', marginBottom: '20px', marginLeft: '20px' }}><HiMiniBars3 color="red"/> Course {course?.name}</h1>
+      <h1 style={{ color: 'red', marginTop: '20px', marginBottom: '20px', marginLeft: '20px' }}> Course {course?.name}</h1>
       <div className="d-flex">
         <CourseNavigation />
         <div className="overflow-y-scroll" style={{ width: '100%', height: '100%' }}>
